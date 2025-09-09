@@ -8,6 +8,7 @@ interface ListaSupensaProps {
     opcoes: Opcao[]
     valor: Opcao | null
     onChange: (opcao: Opcao) => void
+    onBlur: (opcao: Opcao) => void
 }
 
 const ListaSupensa = ({
@@ -15,6 +16,7 @@ const ListaSupensa = ({
     opcoes,
     valor,
     onChange,
+    onBlur,
 }: ListaSupensaProps) => {
     const { estaAberta, setEstaAberta, opcaoFocada, manipularTeclaDoTeclado } =
         useListaSuspensaTeclado({ opcoes, onChange })
@@ -40,6 +42,7 @@ const ListaSupensa = ({
                             key={opcao.value}
                             focoAtivo={index === opcaoFocada}
                             onClick={() => onChange(opcao)}
+                            onBlur={() => onBlur(opcao)}
                         >
                             {opcao.text}
                         </ItemListaSuspensa>
