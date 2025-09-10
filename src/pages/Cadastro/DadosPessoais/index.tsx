@@ -40,10 +40,14 @@ const DadosPessoais = () => {
 
                 if (!values.telefone) {
                     errors.telefone = 'Campo obrigatório'
+                } else if (!/^\d{11}$/i.test(values.telefone)) {
+                    errors.telefone = 'Número de telefone inválido'
                 }
 
                 if (!values.email) {
                     errors.email = 'Campo obrigatório'
+                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                    errors.email = 'Email inválido'
                 }
 
                 if (!values.senha) {
