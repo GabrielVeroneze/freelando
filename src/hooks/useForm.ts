@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import type { FormState } from '@/types/FormState'
+import type { CadastroForm } from '@/types/CadastroForm'
 import type { Opcao } from '@/types/Opcao'
 
-const initialState: FormState = {
+const initialState: CadastroForm = {
     nome: '',
     estado: { value: '', text: '' },
     cidade: '',
@@ -13,9 +13,9 @@ const initialState: FormState = {
 }
 
 export const useForm = () => {
-    const [form, setForm] = useState<FormState>(initialState)
+    const [form, setForm] = useState<CadastroForm>(initialState)
 
-    const handleChange = (field: keyof FormState, value: string | Opcao) => {
+    const handleChange = (field: keyof CadastroForm, value: string | Opcao) => {
         setForm((prev) => ({ ...prev, [field]: value }))
     }
 
