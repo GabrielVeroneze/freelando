@@ -1,7 +1,7 @@
-import type { InputHTMLAttributes } from 'react'
+import { type FieldConfig } from 'formik'
 import { Input, Label } from './styled'
 
-interface CampoTextoProps extends InputHTMLAttributes<HTMLInputElement> {
+interface CampoTextoProps extends FieldConfig {
     titulo: string
 }
 
