@@ -21,7 +21,24 @@ const DadosPessoais = () => {
     }
 
     return (
-        <Formik initialValues={initialValues}>
+        <Formik
+            initialValues={initialValues}
+            validate={values => {
+                const errors: Partial<Record<keyof FormState, string>> = {}
+
+                if (!values.nome) {
+                    errors.nome = 'Campo obrigatório'
+                }
+
+                if (!values.confirmarSenha) {
+                    errors.confirmarSenha = 'Campo obrigatório'
+                } else if (values.senha !== values.confirmarSenha) {
+                    errors.confirmarSenha = 'As senhas não conferem'
+                }
+
+                return errors
+            }}    
+        >
             {(formik) => (
                 <Form onSubmit={formik.handleSubmit}>
                     <Box>
