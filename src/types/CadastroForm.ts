@@ -1,6 +1,6 @@
 import type { Opcao } from '@/types/Opcao'
 
-export interface FormState {
+export interface CadastroForm {
     nome: string
     estado: Opcao
     cidade: string
