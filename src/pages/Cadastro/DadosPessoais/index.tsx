@@ -23,11 +23,31 @@ const DadosPessoais = () => {
     return (
         <Formik
             initialValues={initialValues}
-            validate={values => {
+            validate={(values) => {
                 const errors: Partial<Record<keyof FormState, string>> = {}
 
                 if (!values.nome) {
                     errors.nome = 'Campo obrigatório'
+                }
+
+                if (!values.estado) {
+                    errors.estado = 'Campo obrigatório'
+                }
+
+                if (!values.cidade) {
+                    errors.cidade = 'Campo obrigatório'
+                }
+
+                if (!values.telefone) {
+                    errors.telefone = 'Campo obrigatório'
+                }
+
+                if (!values.email) {
+                    errors.email = 'Campo obrigatório'
+                }
+
+                if (!values.senha) {
+                    errors.senha = 'Campo obrigatório'
                 }
 
                 if (!values.confirmarSenha) {
@@ -37,7 +57,7 @@ const DadosPessoais = () => {
                 }
 
                 return errors
-            }}    
+            }}
         >
             {(formik) => (
                 <Form onSubmit={formik.handleSubmit}>
