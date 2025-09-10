@@ -1,3 +1,4 @@
+import { Field } from 'formik'
 import styled from '@emotion/styled'
 
 export const Label = styled.label`
@@ -9,7 +10,7 @@ export const Label = styled.label`
     width: 100%;
 `
 
-export const Input = styled.input`
+export const Input = styled(Field)`
     background: ${(props) => props.theme.cores.branco};
     border: 1px solid;
     border-color: ${(props) => props.theme.cores.neutras.a};
