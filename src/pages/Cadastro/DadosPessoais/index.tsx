@@ -2,7 +2,7 @@ import { Form, Formik } from 'formik'
 import { Col, Row } from 'react-grid-system'
 import { Link } from 'react-router'
 import { Box } from './styled'
-import type { FormState } from '@/types/FormState'
+import type { CadastroForm } from '@/types/CadastroForm'
 import Tipografia from '@/components/Tipografia'
 import CampoTexto from '@/components/CampoTexto'
 import ListaSupensa from '@/components/ListaSuspensa'
@@ -10,7 +10,7 @@ import Botao from '@/components/Botao'
 import estadosBrasileiros from '@/data/estados.json'
 
 const DadosPessoais = () => {
-    const initialValues: FormState = {
+    const initialValues: CadastroForm = {
         nome: '',
         estado: { value: '', text: '' },
         cidade: '',
@@ -24,7 +24,7 @@ const DadosPessoais = () => {
         <Formik
             initialValues={initialValues}
             validate={(values) => {
-                const errors: Partial<Record<keyof FormState, string>> = {}
+                const errors: Partial<Record<keyof CadastroForm, string>> = {}
 
                 if (!values.nome) {
                     errors.nome = 'Campo obrigatório'
