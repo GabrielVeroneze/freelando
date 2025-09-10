@@ -26,3 +26,8 @@ export const Input = styled(Field)`
     padding: 0 ${(props) => props.theme.espacamentos.s};
     width: 100%;
 `
+
+export const TextoErro = styled.div`
+    color: red;
+    margin-top: 4px;
+`
