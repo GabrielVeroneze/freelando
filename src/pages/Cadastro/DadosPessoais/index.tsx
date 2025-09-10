@@ -1,7 +1,8 @@
-import { Formik } from 'formik'
+import { Form, Formik } from 'formik'
 import { Col, Row } from 'react-grid-system'
 import { Link } from 'react-router'
 import { Box } from './styled'
+import type { FormState } from '@/types/FormState'
 import Tipografia from '@/components/Tipografia'
 import CampoTexto from '@/components/CampoTexto'
 import ListaSupensa from '@/components/ListaSuspensa'
@@ -9,20 +10,20 @@ import Botao from '@/components/Botao'
 import estadosBrasileiros from '@/data/estados.json'
 
 const DadosPessoais = () => {
+    const initialValues: FormState = {
+        nome: '',
+        estado: { value: '', text: '' },
+        cidade: '',
+        telefone: '',
+        email: '',
+        senha: '',
+        confirmarSenha: '',
+    }
+
     return (
-        <Formik
-            initialValues={{
-                nome: '',
-                estado: { value: '', text: '' },
-                cidade: '',
-                telefone: '',
-                email: '',
-                senha: '',
-                confirmarSenha: '',
-            }}
-        >
+        <Formik initialValues={initialValues}>
             {(formik) => (
-                <form>
+                <Form onSubmit={formik.handleSubmit}>
                     <Box>
                         <Tipografia variante="h1" componente="h1">
                             Crie seu cadastro
@@ -125,7 +126,7 @@ const DadosPessoais = () => {
                             </div>
                         </Col>
                     </Row>
-                </form>
+                </Form>
             )}
         </Formik>
     )
