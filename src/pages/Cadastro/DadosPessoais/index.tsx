@@ -39,11 +39,8 @@ const DadosPessoais = () => {
                         <Col>
                             <CampoTexto
                                 titulo="Nome completo"
-                                value={formik.values.nome}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                name="nome"
                                 type="text"
-                                required
                             />
                         </Col>
                     </Row>
@@ -60,11 +57,8 @@ const DadosPessoais = () => {
                         <Col lg={8} md={8} sm={8}>
                             <CampoTexto
                                 titulo="Cidade"
-                                value={formik.values.cidade}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                name="cidade"
                                 type="text"
-                                required
                             />
                         </Col>
                     </Row>
@@ -72,21 +66,15 @@ const DadosPessoais = () => {
                         <Col lg={6} md={6} sm={6}>
                             <CampoTexto
                                 titulo="E-mail"
-                                value={formik.values.email}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                name="email"
                                 type="email"
-                                required
                             />
                         </Col>
                         <Col lg={6} md={6} sm={6}>
                             <CampoTexto
                                 titulo="Telefone"
-                                value={formik.values.telefone}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                name="telefone"
                                 type="tel"
-                                required
                             />
                         </Col>
                     </Row>
@@ -94,21 +82,15 @@ const DadosPessoais = () => {
                         <Col lg={6} md={6} sm={6}>
                             <CampoTexto
                                 titulo="Senha"
-                                value={formik.values.senha}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                name="senha"
                                 type="password"
-                                required
                             />
                         </Col>
                         <Col lg={6} md={6} sm={6}>
                             <CampoTexto
                                 titulo="Confirme sua senha"
-                                value={formik.values.confirmarSenha}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
+                                name="confirmarSenha"
                                 type="password"
-                                required
                             />
                         </Col>
                     </Row>
