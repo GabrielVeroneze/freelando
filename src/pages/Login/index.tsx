@@ -2,6 +2,7 @@ import { Formik } from 'formik'
 import { Col, Container, Row } from 'react-grid-system'
 import { Link as RouterLink } from 'react-router'
 import { Form } from './styled'
+import type { LoginForm } from '@/types/LoginForm'
 import Botao from '@/components/Botao'
 import CampoTexto from '@/components/CampoTexto'
 import Card from '@/components/Card'
@@ -10,13 +11,18 @@ import Tipografia from '@/components/Tipografia'
 import Logo from './assets/logo'
 
 const Login = () => {
+    const initialValues: LoginForm = {
+        email: '',
+        senha: '',
+    }
+
     const tentarEfetuarLogin = async (evento) => {
         evento.preventDefault()
         login(email, senha)
     }
 
     return (
-        <Formik initialValues={{ email: '', senha: '' }}>
+        <Formik initialValues={initialValues}>
             <Container>
                 <Row justify="center">
                     <Col
