@@ -6,11 +6,11 @@ interface BotaoProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variante?: 'primaria' | 'secundaria'
 }
 
-const Botao = ({ children, variante = 'primaria' }: BotaoProps) => {
+const Botao = ({ children, variante = 'primaria', ...rest }: BotaoProps) => {
     return variante === 'primaria' ? (
-        <BotaoPrimario>{children}</BotaoPrimario>
+        <BotaoPrimario {...rest}>{children}</BotaoPrimario>
     ) : (
-        <BotaoSecundario>{children}</BotaoSecundario>
+        <BotaoSecundario {...rest}>{children}</BotaoSecundario>
     )
 }
 
