@@ -1,5 +1,5 @@
-import { useFormikContext } from 'formik';
-import type { InteressesForm } from '@/types/InteressesForm';
+import { useFormikContext } from 'formik'
+import type { InteressesForm } from '@/types/InteressesForm'
 import Radio from '@/components/Radio'
 
 interface GrupoRadioProps {
