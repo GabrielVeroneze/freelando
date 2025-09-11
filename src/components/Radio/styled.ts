@@ -1,6 +1,7 @@
+import { Field } from 'formik'
 import styled from '@emotion/styled'
 
-export const InputEscondido = styled.input`
+export const InputEscondido = styled(Field)`
     appearance: none;
     opacity: 0;
 
