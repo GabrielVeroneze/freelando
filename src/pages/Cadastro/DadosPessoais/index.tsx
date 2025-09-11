@@ -90,9 +90,6 @@ const DadosPessoais = () => {
                             <ListaSupensa
                                 titulo="Estado"
                                 opcoes={estadosBrasileiros}
-                                valor={formik.values.estado}
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
                             />
                         </Col>
                         <Col lg={8} md={8} sm={8}>
