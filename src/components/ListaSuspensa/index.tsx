@@ -1,25 +1,27 @@
+import { useFormikContext } from 'formik'
 import { useListaSuspensaTeclado } from '@/hooks/useListaSuspensaTeclado'
 import { Botao, Label, Lista } from './styled'
+import type { CadastroForm } from '@/types/CadastroForm'
 import type { Opcao } from '@/types/Opcao'
 import ItemListaSuspensa from '@/components/ItemListaSuspensa'
 
 interface ListaSupensaProps {
     titulo: string
     opcoes: Opcao[]
-    valor: Opcao | null
-    onChange: (opcao: Opcao) => void
-    onBlur: (opcao: Opcao) => void
 }
 
-const ListaSupensa = ({
-    titulo,
-    opcoes,
-    valor,
-    onChange,
-    onBlur,
-}: ListaSupensaProps) => {
-    const { estaAberta, setEstaAberta, opcaoFocada, manipularTeclaDoTeclado } =
-        useListaSuspensaTeclado({ opcoes, onChange })
+const ListaSupensa = ({ titulo, opcoes }: ListaSupensaProps) => {
+    const { values, setFieldValue } = useFormikContext<CadastroForm>()
+
+    const {
+        estaAberta,
+        setEstaAberta,
+        opcaoFocada,
+        manipularTeclaDoTeclado
+    } = useListaSuspensaTeclado({
+        opcoes: opcoes,
+        onChange: (opcao) => setFieldValue('estado', opcao),
+    })
 
     return (
         <Label>
@@ -30,7 +32,7 @@ const ListaSupensa = ({
                 onKeyDown={manipularTeclaDoTeclado}
                 type="button"
             >
-                <div>{valor ? valor.text : 'Selecione'}</div>
+                <div>{values.estado.text || 'Selecione'}</div>
                 <div>
                     <span>{estaAberta ? '▲' : '▼'}</span>
                 </div>
@@ -41,8 +43,7 @@ const ListaSupensa = ({
                         <ItemListaSuspensa
                             key={opcao.value}
                             focoAtivo={index === opcaoFocada}
-                            onClick={() => onChange(opcao)}
-                            onBlur={() => onBlur(opcao)}
+                            onClick={() => setFieldValue('estado', opcao)}
                         >
                             {opcao.text}
                         </ItemListaSuspensa>
