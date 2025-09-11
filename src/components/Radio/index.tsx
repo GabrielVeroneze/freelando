@@ -1,22 +1,21 @@
+import type { FieldConfig } from 'formik'
 import { InputEscondido, Label } from './styled'
 
-interface RadioProps {
-    valor: string
+interface RadioProps extends FieldConfig {
     label: string
     checked: boolean
-    onClick: () => void
 }
 
-const Radio = ({ valor, label, checked, onClick }: RadioProps) => (
+const Radio = ({ value, label, checked, ...rest }: RadioProps) => (
     <>
         <InputEscondido
+            id={`radio-customizado-${value}`}
             type="radio"
-            value={valor}
+            value={value}
             checked={checked}
-            onChange={onClick}
-            id={`radio-customizado-${valor}`}
+            {...rest}
         />
-        <Label htmlFor={`radio-customizado-${valor}`} checked={checked}>
+        <Label htmlFor={`radio-customizado-${value}`} checked={checked}>
             {label}
         </Label>
     </>
