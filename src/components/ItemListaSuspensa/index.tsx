@@ -6,8 +6,12 @@ interface ItemListaSuspensaProps extends HTMLAttributes<HTMLLIElement> {
     focoAtivo: boolean
 }
 
-const ItemListaSuspensa = ({ children, focoAtivo }: ItemListaSuspensaProps) => {
-    return <ItemLista focoAtivo={focoAtivo}>{children}</ItemLista>
+const ItemListaSuspensa = ({ children, focoAtivo, ...rest }: ItemListaSuspensaProps) => {
+    return (
+        <ItemLista focoAtivo={focoAtivo} {...rest}>
+            {children}
+        </ItemLista>
+    )
 }
 
 export default ItemListaSuspensa
