@@ -16,7 +16,10 @@ const schema = yup.object().shape({
         .required('Campo obrigatório')
         .min(2, 'Digite seu nome completo'),
     estado: yup
-        .string()
+        .object({
+            value: yup.string().required('Campo obrigatório'),
+            text: yup.string().required('Campo obrigatório'),
+        })
         .required('Campo obrigatório'),
     cidade: yup
         .string()
