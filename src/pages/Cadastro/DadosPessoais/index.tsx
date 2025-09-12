@@ -1,4 +1,5 @@
 import { Form, Formik } from 'formik'
+import { object } from 'yup'
 import { Col, Row } from 'react-grid-system'
 import { Link } from 'react-router'
 import { Box } from './styled'
@@ -8,6 +9,12 @@ import CampoTexto from '@/components/CampoTexto'
 import ListaSupensa from '@/components/ListaSuspensa'
 import Botao from '@/components/Botao'
 import estadosBrasileiros from '@/data/estados.json'
+
+const schema = object({
+
+}).shape({
+
+})
 
 const DadosPessoais = () => {
     const initialValues: CadastroForm = {
