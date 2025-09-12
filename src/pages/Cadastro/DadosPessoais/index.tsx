@@ -10,7 +10,7 @@ import ListaSupensa from '@/components/ListaSuspensa'
 import Botao from '@/components/Botao'
 import estadosBrasileiros from '@/data/estados.json'
 
-const schema = yup.object({}).shape({
+const schema = yup.object().shape({
     nome: yup
         .string()
         .required('Campo obrigatório')
@@ -36,7 +36,7 @@ const schema = yup.object({}).shape({
     confirmarSenha: yup
         .string()
         .required('Campo obrigatório')
-        .oneOf([yup.ref('senha'), null], 'As senhas não conferem'),
+        .oneOf([yup.ref('senha')], 'As senhas não conferem'),
 })
 
 const DadosPessoais = () => {
