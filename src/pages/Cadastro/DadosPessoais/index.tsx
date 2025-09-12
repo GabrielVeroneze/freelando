@@ -1,9 +1,8 @@
-import * as yup from 'yup'
 import { Form, Formik } from 'formik'
 import { Col, Row } from 'react-grid-system'
 import { Link } from 'react-router'
+import { cadastroSchema, type CadastroSchemaType } from '@/schemas/cadastroSchema'
 import { Box } from './styled'
-import type { CadastroForm } from '@/types/CadastroForm'
 import Tipografia from '@/components/Tipografia'
 import CampoTexto from '@/components/CampoTexto'
 import ListaSupensa from '@/components/ListaSuspensa'
@@ -11,43 +10,8 @@ import Checkbox from '@/components/Checkbox'
 import Botao from '@/components/Botao'
 import estadosBrasileiros from '@/data/estados.json'
 
-const schema = yup.object().shape({
-    nome: yup
-        .string()
-        .required('Campo obrigatório')
-        .min(2, 'Digite seu nome completo'),
-    estado: yup
-        .object({
-            value: yup.string().required('Campo obrigatório'),
-            text: yup.string().required('Campo obrigatório'),
-        })
-        .required('Campo obrigatório'),
-    cidade: yup
-        .string()
-        .required('Campo obrigatório')
-        .max(58, 'Digite uma cidade válida'),
-    telefone: yup
-        .string()
-        .required('Campo obrigatório')
-        .matches(/^\d{11}$/, 'Número de telefone inválido'),
-    email: yup
-        .string()
-        .required('Campo obrigatório')
-        .email('Digite um e-mail válido'),
-    senha: yup
-        .string()
-        .required('Campo obrigatório'),
-    confirmarSenha: yup
-        .string()
-        .required('Campo obrigatório')
-        .oneOf([yup.ref('senha')], 'As senhas não conferem'),
-    termos: yup
-        .boolean()
-        .oneOf([true], 'Você deve aceitar os termos'),
-})
-
 const DadosPessoais = () => {
-    const initialValues: CadastroForm = {
+    const initialValues: CadastroSchemaType = {
         nome: '',
         estado: { value: '', text: '' },
         cidade: '',
@@ -61,7 +25,7 @@ const DadosPessoais = () => {
     return (
         <Formik
             initialValues={initialValues}
-            validationSchema={schema}
+            validationSchema={cadastroSchema}
             onSubmit={(values) => {
                 console.log('Dados do formulário: ', values)
             }}
