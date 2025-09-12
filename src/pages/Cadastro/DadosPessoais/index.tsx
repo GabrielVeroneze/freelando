@@ -22,6 +22,21 @@ const schema = yup.object({}).shape({
         .string()
         .required('Campo obrigatório')
         .max(58, 'Digite uma cidade válida'),
+    telefone: yup
+        .string()
+        .required('Campo obrigatório')
+        .matches(/^\d{11}$/, 'Número de telefone inválido'),
+    email: yup
+        .string()
+        .required('Campo obrigatório')
+        .email('Digite um e-mail válido'),
+    senha: yup
+        .string()
+        .required('Campo obrigatório'),
+    confirmarSenha: yup
+        .string()
+        .required('Campo obrigatório')
+        .oneOf([yup.ref('senha'), null], 'As senhas não conferem'),
 })
 
 const DadosPessoais = () => {
