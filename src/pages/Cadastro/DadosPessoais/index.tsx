@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-import { Field, Form, Formik } from 'formik'
+import { Form, Formik } from 'formik'
 import { Col, Row } from 'react-grid-system'
 import { Link } from 'react-router'
 import { Box } from './styled'
@@ -7,6 +7,7 @@ import type { CadastroForm } from '@/types/CadastroForm'
 import Tipografia from '@/components/Tipografia'
 import CampoTexto from '@/components/CampoTexto'
 import ListaSupensa from '@/components/ListaSuspensa'
+import Checkbox from '@/components/Checkbox'
 import Botao from '@/components/Botao'
 import estadosBrasileiros from '@/data/estados.json'
 
@@ -136,15 +137,10 @@ const DadosPessoais = () => {
                     </Row>
                     <Row>
                         <Col>
-                            <label>
-                                <Field type="checkbox" name="termos" />
-                                Aceito os termos e condições
-                            </label>
-                            {formik.errors.termos && (
-                                <div style={{ color: 'red', marginTop: '4px' }}>
-                                    {formik.errors.termos}
-                                </div>
-                            )}
+                            <Checkbox
+                                name="termos"
+                                label="Aceito os termos e condições"
+                            />
                         </Col>
                     </Row>
                     <Row>
@@ -155,9 +151,7 @@ const DadosPessoais = () => {
                         </Col>
                         <Col lg={6} md={6} sm={6}>
                             <div style={{ textAlign: 'right' }}>
-                                {/* <Link to='/cadastro/concluido'> */}
                                 <Botao type="submit">Próxima</Botao>
-                                {/* </Link> */}
                             </div>
                         </Col>
                     </Row>
