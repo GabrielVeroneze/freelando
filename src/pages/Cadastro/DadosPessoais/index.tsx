@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-import { Form, Formik } from 'formik'
+import { Field, Form, Formik } from 'formik'
 import { Col, Row } from 'react-grid-system'
 import { Link } from 'react-router'
 import { Box } from './styled'
@@ -40,6 +40,9 @@ const schema = yup.object().shape({
         .string()
         .required('Campo obrigatório')
         .oneOf([yup.ref('senha')], 'As senhas não conferem'),
+    termos: yup
+        .boolean()
+        .oneOf([true], 'Você deve aceitar os termos'),
 })
 
 const DadosPessoais = () => {
@@ -51,50 +54,13 @@ const DadosPessoais = () => {
         email: '',
         senha: '',
         confirmarSenha: '',
+        termos: false,
     }
 
     return (
         <Formik
             initialValues={initialValues}
-            validate={(values) => {
-                const errors: Partial<Record<keyof CadastroForm, string>> = {}
-
-                if (!values.nome) {
-                    errors.nome = 'Campo obrigatório'
-                }
-
-                if (!values.estado) {
-                    errors.estado = 'Campo obrigatório'
-                }
-
-                if (!values.cidade) {
-                    errors.cidade = 'Campo obrigatório'
-                }
-
-                if (!values.telefone) {
-                    errors.telefone = 'Campo obrigatório'
-                } else if (!/^\d{11}$/i.test(values.telefone)) {
-                    errors.telefone = 'Número de telefone inválido'
-                }
-
-                if (!values.email) {
-                    errors.email = 'Campo obrigatório'
-                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-                    errors.email = 'Email inválido'
-                }
-
-                if (!values.senha) {
-                    errors.senha = 'Campo obrigatório'
-                }
-
-                if (!values.confirmarSenha) {
-                    errors.confirmarSenha = 'Campo obrigatório'
-                } else if (values.senha !== values.confirmarSenha) {
-                    errors.confirmarSenha = 'As senhas não conferem'
-                }
-
-                return errors
-            }}
+            validationSchema={schema}
             onSubmit={(values) => {
                 console.log('Dados do formulário: ', values)
             }}
@@ -166,6 +132,19 @@ const DadosPessoais = () => {
                                 name="confirmarSenha"
                                 type="password"
                             />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <label>
+                                <Field type="checkbox" name="termos" />
+                                Aceito os termos e condições
+                            </label>
+                            {formik.errors.termos && (
+                                <div style={{ color: 'red', marginTop: '4px' }}>
+                                    {formik.errors.termos}
+                                </div>
+                            )}
                         </Col>
                     </Row>
                     <Row>
