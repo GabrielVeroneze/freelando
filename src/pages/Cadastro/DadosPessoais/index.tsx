@@ -13,6 +13,7 @@ import estadosBrasileiros from '@/data/estados.json'
 const DadosPessoais = () => {
     const initialValues: CadastroSchemaType = {
         nome: '',
+        nascimento: null,
         estado: { value: '', text: '' },
         cidade: '',
         telefone: '',
@@ -49,6 +50,13 @@ const DadosPessoais = () => {
                                 titulo="Nome completo"
                                 name="nome"
                                 type="text"
+                            />
+                        </Col>
+                        <Col>
+                            <CampoTexto
+                                titulo="Data de nascimento"
+                                name="nascimento"
+                                type="date"
                             />
                         </Col>
                     </Row>
