@@ -3,8 +3,15 @@ import * as yup from 'yup'
 export const cadastroSchema = yup.object().shape({
     nome: yup
         .string()
+        .trim()
+        .lowercase()
         .required('Campo obrigatório')
         .min(2, 'Digite seu nome completo'),
+    nascimento: yup
+        .date()
+        .required('Campo obrigatório')
+        .max(new Date(), 'Digite uma data válida')
+        .nullable(),
     estado: yup
         .object({
             value: yup.string().required('Campo obrigatório'),
