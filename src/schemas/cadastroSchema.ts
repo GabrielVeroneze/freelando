@@ -1,4 +1,5 @@
 import * as yup from 'yup'
+import { formatarTelefone } from '@/utils/formatarTelefone'
 
 export const cadastroSchema = yup.object().shape({
     nome: yup
@@ -25,7 +26,8 @@ export const cadastroSchema = yup.object().shape({
     telefone: yup
         .string()
         .required('Campo obrigatório')
-        .matches(/^\d{11}$/, 'Número de telefone inválido'),
+        .matches(/^\d{11}$/, 'Número de telefone inválido')
+        .transform(formatarTelefone),
     email: yup
         .string()
         .required('Campo obrigatório')
